@@ -1,14 +1,13 @@
 $(document).ready(function(){
-	setTimeout(function(){
-		executeSamaritan('what are your commands ?');
-//		executeSamaritanWrapper('adsasd')();
-	}, 5700);
-
 	var executeSamaritanWrapper = function(msg){
 		return function(){executeSamaritan(msg)};
 	};
 
 	if (annyang) {
+		setTimeout(function(){
+			executeSamaritan('what are your commands ?');
+		}, 10000);
+
 		var commands = {
 			'locate the machine': executeSamaritanWrapper('Target can not be reached !'),
 			'where are you': executeSamaritanWrapper("I am everywhere , i am god"),
@@ -25,7 +24,6 @@ $(document).ready(function(){
 			'restart': executeSamaritanWrapper('initiating reboot sequence'),
 			'who created you': executeSamaritanWrapper("it's irrelevant"),
 			'who won': executeSamaritanWrapper('team machine'),
-			'say my name': executeSamaritanWrapper('heisenberg'),
 			'find (me) *name': function(name){
 				executeSamaritan('searching for ' + name);
 			},
@@ -40,6 +38,10 @@ $(document).ready(function(){
 
 		annyang.addCommands(commands);
 		annyang.start();
+	} else {
+		setTimeout(function(){
+			executeSamaritan('speech recognition not supported in this browser !');
+		}, 10000);
 	}
 
 });
