@@ -1,7 +1,5 @@
-Samaritan
+[Samaritan 2.0!](https://rodrigograca31.github.io/Samaritan/)
 =========
-###[Live version](https://alexandrusimandi.github.io/Samaritan/)
-###Original project - [demo page](https://github.com/rodrigograca31/Samaritan)
 
 Technologies:
 * HTML
@@ -11,8 +9,10 @@ Technologies:
 Original author:
 Rodrigo Graça
 
-Modifications by:
+Honorable mentions to:
 <br />
 Jeiel Aranal [@chemikhazi](http://twitter.com/chemikhazi)
 <br />
 Alexandru Simandi
+<br />
+and [all the other contributors](https://github.com/rodrigograca31/Samaritan/graphs/contributors)
