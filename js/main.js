@@ -2,26 +2,60 @@ $(document).ready(function(){
 	samaritanModule.start();
 	speechModule.start();
 
-	setInterval(function(){
-		var image = $('<img src="http://lorempixel.com/200/200/?v=1404442966794?v=' + Math.random() + '">');
-		$('body').append(image);
-		image.attr('style', 'position: fixed; left: 20vw; top: 100vh; z-index: -1; box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.75);');
-		image.velocity({
-			top: '-20vh'
-		}, 3000, [0.62,0.86,0.51,0.27], function(){
-			image.remove();
-		});
-	}, 1500);
+	var baseSpeed = 8770;
+	var scrollBarInterval = 3000;
+	var imageInterval = 537;
+
+	var leftRatio = Math.random() / 2 + 1.1;
 
 	setInterval(function(){
 		var image = $('<img src="http://lorempixel.com/200/200/?v=1404442966794?v=' + Math.random() + '">');
 		$('body').append(image);
-		image.attr('style', 'position: fixed; right: 20vw; top: -20vh; z-index: -1; box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.75);');
+		image.attr('style', 'position: fixed; left: 20vw; top: 2000px; z-index: -1;');
 		image.velocity({
-			top: '100vh'
-		}, 3000, [0.62,0.86,0.51,0.27], function(){
+			top: '-2000px'
+		}, baseSpeed * leftRatio, 'linear', function(){
 			image.remove();
 		});
-	}, 1500);
+
+
+	}, imageInterval * leftRatio);
+
+	setInterval(function(){
+		var scrollbar = $('<img src="img/scrollbar.png">');
+		$('body').append(scrollbar);
+		scrollbar.attr('style', 'position: fixed; left: 10vw; top: 2000px; z-index: -1;');
+		scrollbar.velocity({
+			top: '-2000px'
+		}, baseSpeed * leftRatio, 'linear', function(){
+			scrollbar.remove();
+		});
+	}, scrollBarInterval * leftRatio);
+
+	var rightRatio = Math.random() / 2 + 1.1;
+
+	setInterval(function(){
+		var image = $('<img src="http://lorempixel.com/200/200/?v=1404442966794?v=' + Math.random() + '">');
+		$('body').append(image);
+		image.attr('style', 'position: fixed; right: 20vw; top: 2000px; z-index: -1;');
+		image.velocity({
+			top: '-2000px'
+		}, baseSpeed * rightRatio, 'linear', function(){
+			image.remove();
+		});
+
+
+	}, imageInterval * rightRatio);
+
+	setInterval(function(){
+		var scrollbar = $('<img src="img/scrollbar.png">');
+		$('body').append(scrollbar);
+		scrollbar.attr('style', 'position: fixed; right: 10vw; top: 2000px; z-index: -1;');
+		scrollbar.velocity({
+			top: '-2000px'
+		}, baseSpeed * rightRatio, 'linear', function(){
+			scrollbar.remove();
+		});
+	}, scrollBarInterval * rightRatio);
 
 });
