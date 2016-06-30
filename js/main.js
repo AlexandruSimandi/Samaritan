@@ -50,7 +50,7 @@ $(document).ready(function(){
 	setInterval(function(){
 		var scrollbar = $('<img src="img/scrollbar.png">');
 		$('body').append(scrollbar);
-		scrollbar.attr('style', 'position: fixed; right: 10vw; top: 2000px; z-index: -1;');
+		scrollbar.attr('style', 'position: fixed; right: 10vw; top: 2000px; z-index: -1; transform: scaleX(-1); filter: FlipH;');
 		scrollbar.velocity({
 			top: '-2000px'
 		}, baseSpeed * rightRatio, 'linear', function(){

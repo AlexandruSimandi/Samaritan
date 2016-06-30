@@ -6,6 +6,8 @@ var speechModule = (function () {
 		};
 	};
 
+	var _flickrSearchUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c359958b98a60fc24acdc9b2e3f11c90&format=json&per_page=10&tags=';
+
 	var _commands = {
 		'locate the machine': _writeWrapper('Target can not be reached !'),
 		'where are you': _writeWrapper("I am everywhere , i am god"),
@@ -21,6 +23,24 @@ var speechModule = (function () {
 		'who won': _writeWrapper('team machine'),
 		'find (me) *name': function (name) {
 			samaritanModule.write('searching for ' + name);
+//			console.log(_flickrSearchUrl + name);
+			$.ajax({
+				url: _flickrSearchUrl + name,
+				type: 'GET',
+				dataType: 'json'
+			}).always(function(data){
+//				console.log(data.responseText.substring(18, data.responseText.length - 1));
+				var photos = JSON.parse(data.responseText.substring(18, data.responseText.length - 1)).photos.photo;
+				//console.log(photos);
+
+				var photosURL = [];
+
+				for(var i = 0; i < photos.length; i++){
+					photosURL.push('https://farm' + photos[i].farm +'.static.flickr.com/' + photos[i].server + '/' + photos[i].id + '_' + photos[i].secret + '.jpg');
+				}
+
+				console.log(photosURL);
+			});
 		},
 		'search (for) *name': function (name) {
 			samaritanModule.write('searching for ' + name);
