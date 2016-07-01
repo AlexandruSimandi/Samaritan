@@ -6,7 +6,7 @@ var speechModule = (function () {
 		};
 	};
 
-	var _flickrSearchUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c359958b98a60fc24acdc9b2e3f11c90&format=json&per_page=10&tags=';
+	var _flickrSearchUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c359958b98a60fc24acdc9b2e3f11c90&format=json&per_page=30&tags=';
 
 	var _commands = {
 		'locate the machine': _writeWrapper('Target can not be reached !'),
@@ -30,7 +30,8 @@ var speechModule = (function () {
 				dataType: 'json'
 			}).always(function(data){
 //				console.log(data.responseText.substring(18, data.responseText.length - 1));
-				var photos = JSON.parse(data.responseText.substring(18, data.responseText.length - 1)).photos.photo;
+				//18
+				var photos = JSON.parse(data.responseText.substring(14, data.responseText.length - 1)).photos.photo;
 				//console.log(photos);
 
 				var photosURL = [];
@@ -40,6 +41,8 @@ var speechModule = (function () {
 				}
 
 				console.log(photosURL);
+
+				samaritanModule.showImages(photosURL);
 			});
 		},
 		'search (for) *name': function (name) {

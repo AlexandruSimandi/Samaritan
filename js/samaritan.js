@@ -193,9 +193,96 @@ var samaritanModule = (function () {
 		})
 	}; // write function
 
+	var showImages = function (imagesURL){
+		var baseSpeed = 8770;
+		var scrollBarInterval = 3000;
+		var imageInterval = 1337;
+
+		var leftRatio = Math.random() / 2 + 1.3;
+
+		setTimeout(function(){
+			var intervalLeftImages = setInterval(function(){
+				if(imagesURL.length == 0){
+					clearInterval(intervalLeftScroll);
+					return;
+				}
+
+				//style bugs on chrome on fixed images
+				var image = $('<img width="250" src="' + imagesURL.pop() + '">');
+				$('body').append(image);
+				image.attr('style', 'position: fixed; left: 20vw; top: 2000px; z-index: -1;');
+				image.velocity({
+					top: '-2000px'
+				}, baseSpeed * leftRatio, 'linear', function(){
+					image.remove();
+				});
+
+
+			}, imageInterval * leftRatio);
+		}, scrollBarInterval);
+
+		var intervalLeftScroll = setInterval(function(){
+			if(imagesURL.length == 0){
+				clearInterval(intervalLeftScroll);
+				return;
+			}
+
+			var scrollbar = $('<img src="img/scrollbar.png">');
+			$('body').append(scrollbar);
+			scrollbar.attr('style', 'position: fixed; left: 10vw; top: 2000px; z-index: -1;');
+			scrollbar.velocity({
+				top: '-2000px'
+			}, baseSpeed * leftRatio, 'linear', function(){
+				scrollbar.remove();
+			});
+		}, scrollBarInterval * leftRatio);
+
+		var rightRatio = Math.random() / 2 + 1.3;
+
+		setTimeout(function(){
+			var intervalRightImages = setInterval(function(){
+				if(imagesURL.length == 0){
+					clearInterval(intervalLeftScroll);
+					return;
+				}
+
+				//style bugs on chrome on fixed images
+				var image = $('<img width="250" src="' + imagesURL.pop() + '">');
+				$('body').append(image);
+				image.attr('style', 'position: fixed; right: 20vw; top: 2000px; z-index: -1;');
+				image.velocity({
+					top: '-2000px'
+				}, baseSpeed * rightRatio, 'linear', function(){
+					image.remove();
+				});
+
+
+			}, imageInterval * rightRatio);
+		}, scrollBarInterval);
+
+		var intervalRightScroll = setInterval(function(){
+			if(imagesURL.length == 0){
+				clearInterval(intervalLeftScroll);
+				return;
+			}
+
+			var scrollbar = $('<img src="img/scrollbar.png">');
+			$('body').append(scrollbar);
+			scrollbar.attr('style', 'position: fixed; right: 10vw; top: 2000px; z-index: -1; transform: scaleX(-1); filter: FlipH;');
+			scrollbar.velocity({
+				top: '-2000px'
+			}, baseSpeed * rightRatio, 'linear', function(){
+				scrollbar.remove();
+			});
+		}, scrollBarInterval * rightRatio);
+
+
+	}
+
 	return {
 		start: start,
-		write: write
+		write: write,
+		showImages: showImages
 	};
 
 })();
