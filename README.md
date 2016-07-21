@@ -3,10 +3,9 @@ Samaritan
 ###[Live version](https://alexandrusimandi.github.io/Samaritan/)
 ###Original project - [demo page](https://github.com/rodrigograca31/Samaritan)
 
-Technologies:
-* HTML
-* CSS
-* JS
+Features:
+* Speech recognition
+* Voice image search
 
 Original author:
 Rodrigo Graça
