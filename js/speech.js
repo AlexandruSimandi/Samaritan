@@ -60,6 +60,7 @@ var speechModule = (function () {
 	var start = function () {
 		if (annyang) {
 			setTimeout(function () {
+				samaritanModule.writeFromUrl();
 				samaritanModule.write('what are your commands ?');
 			}, 10000);
 
